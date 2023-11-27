@@ -11,7 +11,7 @@ export const App = () => {
   const [value, setValue] = useState('');
   const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
   const [isShowModal, setIsShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isEmpty, setIsEmpty] = useState(false);
