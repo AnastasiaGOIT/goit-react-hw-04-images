@@ -18,31 +18,23 @@ export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (!value) return;
     setLoading(true);
-    // if (!value) return alert('Enter something!');
-    // setError(null);
 
-    api(value)
+    api(value, page)
       .then(data => {
-        console.log(data);
         if (data.hits.length === 0) {
           setIsEmpty(true);
         }
         setImage(prevState => [...prevState, ...data.hits]);
 
-        const loadEnd = totalHits => {
-          const perPage = 12;
-          setIsVisible(page < Math.ceil(totalHits / perPage));
-          console.log(page);
-        };
-        loadEnd(data.totalHits);
+        setIsVisible(page < Math.ceil(data.totalHits / 12));
       })
 
       .catch(error => setError(error))
       .finally(() => setLoading(false));
   }, [value, page]);
 
-  useEffect(page => {});
   const handleSearchFormSubmit = value => {
     if (!value) {
       alert('Enter something!');
