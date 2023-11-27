@@ -11,7 +11,7 @@ export const App = () => {
   const [value, setValue] = useState('');
   const [image, setImage] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
   const [isShowModal, setIsShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isEmpty, setIsEmpty] = useState(false);
@@ -73,7 +73,7 @@ export const App = () => {
     >
       <Searchbar onSubmit={handleSearchFormSubmit} />
       {isEmpty && <Text />}
-      {/* {error && <h1>{ }</h1>} */}
+      {error && <h1>Error...try again later</h1>}
       {loading && <Audio />}
       <ImageGallery openModal={openModal} value={value} image={image} />
       {isVisible && <Button onLoadMore={onLoadMore} />}
