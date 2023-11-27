@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import css from './Searchbar.module.css';
 
-export const Searchbar = () => {
+export const Searchbar = ({ onSubmit }) => {
   const [value, setValue] = useState('');
 
-  const onSubmit = e => {
+  const onSubmitForm = e => {
     e.preventDefault();
     if (value.trim() === '') {
       return;
@@ -18,7 +18,7 @@ export const Searchbar = () => {
 
   return (
     <header className={css.searchbar}>
-      <form className={css.searchForm} onSubmit={e => onSubmit}>
+      <form className={css.searchForm} onSubmit={onSubmitForm}>
         <button type="submit" className={css.searchForm_button}>
           <span className="button-label">Search</span>
         </button>
